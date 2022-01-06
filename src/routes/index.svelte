@@ -73,8 +73,6 @@
         </div>
         <div class="pixelfont text-sm mt-5 mb-10">.. a další přednášející připravujeme!</div>
 
-        <div class="subline-shadow text-lg md:text-xl lg:text-2xl"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
-
         <div class="mt-12 mb-6 flex flex-wrap justify-center relative gap-4 text-sm">
           {#each data.spec.tracks as track}
             <div on:mouseover={() => mouseOverCat(track.id)} on:mouseleave={mouseLeaveCat}
@@ -83,6 +81,9 @@
         </div>
       {/await}
     </div>
+
+    <div class="subline-shadow2 text-lg md:text-xl lg:text-2xl mt-14"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
+
 
     <div class="flex flex-wrap justify-center relative mt-10">
       <a class="m-2" href="https://docs.utxo.cz"><i class="fas fa-book"></i> Dokumentace</a>
@@ -126,6 +127,13 @@
     color: white;
     text-shadow: 0.2em 0.2em #00000040;
   }
+
+  .subline-shadow2 {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: 0.2em 0.2em #00000040;
+  }
+
 
 	.welcome {
 		position: relative;
