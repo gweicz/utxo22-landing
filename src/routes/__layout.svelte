@@ -1,6 +1,7 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+
 </script>
 
 <div class="layout min-h-screen py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
