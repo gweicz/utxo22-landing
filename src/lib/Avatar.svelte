@@ -47,7 +47,7 @@
 <div >
   <SvelteTooltip tip={tip}>
     <a href="{url}" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
-      <img class="avatar {lead ? 'w-24 md:w-26 lg:w-28 m-4' : 'small w-16 md:w-18 m-4'}" src={currentImg} alt={speaker.name} />
+      <img class="avatar {lead ? 'w-24 md:w-28 m-4' : 'small w-16 md:w-18 m-4'}" src={currentImg} alt={speaker.name} />
   </SvelteTooltip>
 </div>
 
