@@ -17,7 +17,7 @@
 
 <section>
   <div class="relative px-6 pt-10 pb-8 sm:max-w-5xl sm:mx-auto sm:rounded-lg sm:px-5 text-center">
-    <h1 class="text-6xl md:text-7xl lg:text-8xl">UTXO.22</h1>
+    <h1 class="text-5xl md:text-6xl lg:text-8xl xl:text-10xl">UTXO.22</h1>
     <div class="subline-shadow text-lg md:text-xl lg:text-2xl">4.-5. červen 2022 @ Gabriel Loci, Praha</div>
     <div class="subline text-sm md:text-md lg:text-lg">Otevřená komunitní kryptoměnová konference</div>
 
