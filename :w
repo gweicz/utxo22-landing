@@ -27,7 +27,7 @@
   }
 
   function mouseOverSpeaker (speaker) {
-    selectedSpeaker = speaker
+    selectedSpeaker = speaker.id
   }
 
   function mouseLeaveSpeaker () {
@@ -41,7 +41,7 @@
 </svelte:head>
 
 <section>
-  <div class="relative px-6 pt-10 pb-8 sm:max-w-6xl sm:mx-auto sm:rounded-lg sm:px-5 text-center">
+  <div class="relative px-6 pt-10 pb-8 sm:max-w-5xl sm:mx-auto sm:rounded-lg sm:px-5 text-center">
     <h1 class="text-5xl md:text-6xl lg:text-7xl">{h1}</h1>
     <div class="subline-shadow text-lg md:text-xl lg:text-2xl">4.-5. červen 2022 @ Gabriel Loci, Praha</div>
     <div class="subline text-sm md:text-md lg:text-lg text-gray-800">Otevřená komunitní kryptoměnová konference</div>
@@ -55,7 +55,7 @@
         {#each data.spec.speakers as speaker}
           {#if speaker.lead}
             <div on:mouseover={() => mouseOverSpeaker(speaker)} on:mouseleave={mouseLeaveSpeaker}>
-              <Avatar speaker={speaker} lead={true} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker.id === speaker.id)} />
+              <Avatar speaker={speaker} lead={true} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker === speaker.id)} />
             </div>
           {/if}
         {/each}
@@ -65,8 +65,8 @@
         <div class="flex flex-wrap justify-center relative">
         {#each data.spec.speakers as speaker}
           {#if !speaker.lead}
-            <div on:mouseover={() => mouseOverSpeaker(speaker)} on:mouseleave={mouseLeaveSpeaker}>
-              <Avatar speaker={speaker} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker.id === speaker.id)} />
+            <div>
+              <Avatar speaker={speaker} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker === speaker.id)} />
             </div>
           {/if}
         {/each}
@@ -78,13 +78,13 @@
         <div class="mt-12 mb-6 flex flex-wrap justify-center relative gap-4 text-sm">
           {#each data.spec.tracks as track}
             <div on:mouseover={() => mouseOverCat(track.id)} on:mouseleave={mouseLeaveCat}
-              class="block transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 p-5 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.name}</div>
+              class="block transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 p-5 cursor-pointer">{track.name}</div>
           {/each}
         </div>
       {/await}
     </div>
 
-    <div class="flex flex-wrap justify-center relative mt-10">
+    <div class="flex flex-wrap justify-center relative">
       <a class="m-2" href="https://docs.utxo.cz"><i class="fas fa-book"></i> Dokumentace</a>
       <a class="m-2" href="https://twitter.com/utxocz"><i class="fab fa-twitter"></i> Twitter</a>
       <a class="m-2" href="https://discord.gg/5k9dEtVhnv"><i class="fab fa-discord"></i> Discord</a>
