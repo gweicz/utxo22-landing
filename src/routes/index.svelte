@@ -25,7 +25,7 @@
       {#await bundle}
         <div style="min-height: 450px;">Načítám obsah ...</div>
       {:then data}
-        <h2 class="pixelfont md:text-md lg:text-lg">Významní hosté</h2>
+        <!--h2 class="pixelfont md:text-md lg:text-lg">Přednášející ({data.spec.speakers.length})</h2-->
         <div class="mt-3 mb-6 flex flex-wrap justify-center relative">
         {#each data.spec.speakers as speaker}
           {#if speaker.lead}
@@ -36,8 +36,8 @@
         {/each}
         </div>
 
-        <h2 class="pixelfont">Další přednášející</h2>
-        <div class="flex flex-wrap justify-center relative mt-5">
+        <!--h2 class="pixelfont">Další přednášející</h2-->
+        <div class="flex flex-wrap justify-center relative">
         {#each data.spec.speakers as speaker}
           {#if !speaker.lead}
             <div>
