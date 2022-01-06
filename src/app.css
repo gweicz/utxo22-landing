@@ -1,0 +1,21 @@
+@import '@fontsource/fira-mono';
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-bold;
+  }
+}
+
+body {
+  color: white
+}
+
+.pixelfont {
+  font-family: 'Press Start 2P', cursive;
+}
