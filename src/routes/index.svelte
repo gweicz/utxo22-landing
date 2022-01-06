@@ -76,7 +76,7 @@
         <div class="mt-12 mb-6 flex flex-wrap justify-center relative gap-4 text-sm">
           {#each data.spec.tracks as track}
             <div on:mouseover={() => mouseOverCat(track.id)} on:mouseleave={mouseLeaveCat}
-              class="block transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 p-5 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.name}</div>
+              class="block transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 px-6 py-4 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.name}</div>
           {/each}
         </div>
       {/await}
