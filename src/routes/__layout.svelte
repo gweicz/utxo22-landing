@@ -4,7 +4,7 @@
 
 </script>
 
-<div class="layout min-h-screen py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
+<div class="layout min-h-screen py-6 flex flex-col justify-center relative overflow-hidden">
   <div class="inset-0">
     <!--Header /-->
 

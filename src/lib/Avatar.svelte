@@ -47,8 +47,7 @@
 <div >
   <SvelteTooltip tip={tip}>
     <a href="{url}" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
-      <img class="avatar {lead ? '' : 'small'}" src={currentImg} alt={speaker.name} title={speaker.name} />
-    </a>
+      <img class="avatar {lead ? 'w-20 md:w-24 lg:w-28 m-4' : 'small w-14 md:w-16 m-4'}" src={currentImg} alt={speaker.name} title={speaker.name} />
   </SvelteTooltip>
 </div>
 
@@ -56,16 +55,16 @@
 
   .avatar {
     border-radius: 50%;
-    height: 5em;
-    width: 5em;
+    /*height: 5em;
+    width: 5em;*/
     margin: 0.5em;
 
     box-shadow: 5px 4px #00000020;
   }
 
   .avatar.small {
-    width: 3.5em;
-    height: 3.5em;
+    /*width: 3.5em;
+    height: 3.5em;*/
     margin: 0.4em;
   }
 
