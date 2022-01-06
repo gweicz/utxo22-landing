@@ -46,7 +46,7 @@
           {/if}
         {/each}
         </div>
-        <div class="pixelfont text-sm mt-5">.. a to není rozhodně všechno!</div>
+        <div class="pixelfont text-sm mt-5 mb-10">.. a bude toho ještě víc!</div>
 
         <div class="subline-shadow text-lg md:text-xl lg:text-2xl"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
       {/await}
