@@ -49,7 +49,7 @@
 
 <div >
   <SvelteTooltip tip={tip}>
-    <a href="{url}" class="rounded-full" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
+    <a href="{url}" target="_blank" class="rounded-full" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
       <img class="avatar transition-all {visible ? '' : 'opacity-20'} {lead ? 'w-24 md:w-28 m-4' : 'small w-14 md:w-16 m-4'} {category && speaker.tracks && speaker.tracks.includes(category) ? '' : category ? ('opacity-20') : '' }" src={currentImg} alt={speaker.name} />
   </SvelteTooltip>
 </div>
