@@ -19,3 +19,17 @@ body {
 .pixelfont {
   font-family: 'Press Start 2P', cursive;
 }
+
+.md blockquote {
+  margin-top: 1em;
+  padding-left: 1em;
+  border-left: 2px solid black;
+}
+
+.md a {
+  text-decoration: underline;
+}
+
+.md a:hover {
+  text-decoration: none;
+}
