@@ -113,6 +113,8 @@
       <a class="m-3" href={bundle.links.fbevent}><i class="fab fa-facebook"></i> Facebook</a>
     </div>
 
+    <div class="mt-5 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
+
   </div>
 </section>
 
