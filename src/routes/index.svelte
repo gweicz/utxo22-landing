@@ -105,6 +105,8 @@
       </div>
     </div>
 
+    <div class="mt-5 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
+
     <div class="flex flex-wrap justify-center relative mt-5 pixelfont text-sm">
       <a class="m-3" href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
       <a class="m-3" href={bundle.links.twitter}><i class="fab fa-twitter"></i> Twitter</a>
@@ -112,8 +114,6 @@
       <a class="m-3" href={bundle.links.telegram}><i class="fab fa-telegram-plane"></i> Telegram</a>
       <a class="m-3" href={bundle.links.fbevent}><i class="fab fa-facebook"></i> Facebook</a>
     </div>
-
-    <div class="mt-5 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
   </div>
 </section>
