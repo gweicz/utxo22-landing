@@ -83,7 +83,7 @@
         <div class="mt-12 mb-6 flex flex-wrap justify-center relative gap-4 text-sm">
           {#each bundle.spec.tracks as track}
             <div on:mouseover={() => mouseOverCat(track.id)} on:mouseleave={mouseLeaveCat}
-              class="block transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 px-6 py-4 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.shortname || track.name}</div>
+              class="block box-shadow transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 px-6 py-4 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.shortname || track.name}</div>
           {/each}
         </div>
     </div>
@@ -95,7 +95,7 @@
     <div class="container w-full">
       <div class="columns-1 xl:columns-2 mt-5 h-auto text-gray-800">
         {#each bundle.spec.faqs as item}
-          <div class="container mb-5 break-inside-avoid-column bg-white/30 rounded-3xl px-6 py-4 text-left transition-all">
+          <div class="mb-5 break-inside-avoid-column bg-white/30 rounded-3xl px-6 py-4 text-left transition-all box-shadow-light overflow-visible">
             <h3 class="pixelfont text-sm mb-3">{item.question}</h3>
             <p class="md">
               <SvelteMarkdown source={item.answer} />
@@ -124,6 +124,14 @@
 
   a:hover {
     color: black;
+  }
+
+  .box-shadow {
+    box-shadow: 0.4em 0.3em #00000010;
+  }
+
+  .box-shadow-light {
+    box-shadow: 0.3em 0.1em #00000010;
   }
 
 	h1 {
