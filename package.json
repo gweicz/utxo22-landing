@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
+    "prepare": "curl -o src/lib/bundle.json https://spec.utxo.cz/22/bundle.json",
+    "build": "npm run prepare && svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview"
   },
