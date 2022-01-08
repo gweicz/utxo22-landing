@@ -29,8 +29,8 @@
     speakerImg = '/img/twitter-avatar.png'
   }
 
-  const url = speaker.twitter ? `https://twitter.com/${speaker.twitter}` : speaker.web?.url
-  const tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '')
+  $: url = speaker.twitter ? `https://twitter.com/${speaker.twitter}` : speaker.web?.url
+  $: tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '')
 
   let currentImg = speakerImg
 
