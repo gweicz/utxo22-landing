@@ -130,13 +130,15 @@
 
     <div class="mt-3 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
-    <div class="flex flex-wrap justify-center relative mt-5 pixelfont text-sm">
-      <a class="m-3" href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
-      <a class="m-3" href={bundle.links.twitter}><i class="fab fa-twitter"></i> Twitter</a>
-      <a class="m-3" href={bundle.links.discord}><i class="fab fa-discord"></i> Discord</a>
-      <a class="m-3" href={bundle.links.telegram}><i class="fab fa-telegram-plane"></i> Telegram</a>
-      <a class="m-3" href={bundle.links.fbevent}><i class="fab fa-facebook"></i> Facebook</a>
-    </div>
+        <div class="flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
+          <a href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
+          <a href={bundle.links.substack}><i class="fas fa-newspaper"></i> Newsletter</a>
+          <a href={bundle.links.discord}><i class="fab fa-discord"></i> Discord</a>
+          <a href={bundle.links.telegram}><i class="fab fa-telegram-plane"></i> Telegram</a>
+          <a href={bundle.links.twitter}><i class="fab fa-twitter"></i> Twitter</a>
+          <a href={bundle.links.instagram}><i class="fab fa-instagram"></i> Instagram</a>
+          <a href={bundle.links.fbevent}><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
 
   </div>
 </section>
@@ -157,6 +159,11 @@
 
   .box-shadow-light {
     box-shadow: 0.3em 0.1em #00000010;
+  }
+
+  .pixelfont-micro {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
   }
 
 	h1 {
