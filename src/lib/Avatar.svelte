@@ -3,6 +3,7 @@
   export let lead = null
   export let category = null
   export let visible = true
+  export let col = 'speakers'
 
   import SvelteTooltip from '$lib/SvelteTooltip.svelte';
 
@@ -10,12 +11,13 @@
 
   let speakerImg
   let speakerImgAlt
+  console.log(speaker)
 
   if (speaker.photos && speaker.photos.length > 0) {
     for (const prio of priority) {
       if (speaker.photos.includes(prio)) {
         const [ ext, format ] = prio.split(':')
-        const fn = `https://spec.utxo.cz/22/photos/speakers/${speaker.id}-${ext}.${format}`
+        const fn = `https://spec.utxo.cz/22/photos/${col}/${speaker.id}-${ext}.${format}`
         if (speakerImg) {
           speakerImgAlt = fn
           break

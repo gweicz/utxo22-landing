@@ -44,6 +44,12 @@
     selectedSpeaker = null
   }
 
+  $: partnersTable = [
+    { title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
+    { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
+    { title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
+  ]
+
 </script>
 
 <svelte:head>
@@ -105,7 +111,20 @@
       </div>
     </div>
 
-    <div class="mt-5 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
+    <div class="columns-1 xl:columns-3">
+      {#each partnersTable as table}
+      <div class="break-inside-avoid-column mb-5">
+        <h2 class="pixelfont text-gray-800 text-sm mb-3">{table.title}</h2>
+        <div class="flex flex-wrap justify-center">
+          {#each table.arr as item}
+            <Avatar speaker={item} col="partners" />
+          {/each}
+        </div>
+      </div>
+      {/each}
+    </div>
+
+    <div class="mt-3 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
     <div class="flex flex-wrap justify-center relative mt-5 pixelfont text-sm">
       <a class="m-3" href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
