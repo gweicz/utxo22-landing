@@ -11,14 +11,16 @@
   import staticBundle from '$lib/bundle.json'
 
   let bundle = staticBundle
+  let partnersTable = partnersTableGen()
 
   let hostname = $page.url.hostname
-  if (hostname === 'localhost') {
+  if (hostname === 'localhostx') {
     console.log('Local only mode')
   } else {
     const liveBundleLoader = (async () => {
       const response = await fetch('https://spec.utxo.cz/22/bundle.json')
       bundle = await response.json()
+      partnersTable = partnersTableGen()
     })()
   }
 
@@ -44,11 +46,13 @@
     selectedSpeaker = null
   }
 
-  $: partnersTable = [
-    { title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
-    { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
-    { title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
-  ]
+  function partnersTableGen () {
+    return [
+      { title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
+      { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
+      { title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
+    ]
+  }
 
 </script>
 
