@@ -130,7 +130,7 @@
 
     <div class="mt-3 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
-        <div class="flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
+        <div class="footer-link flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
           <a href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
           <a href={bundle.links.substack}><i class="fas fa-newspaper"></i> Newsletter</a>
           <a href={bundle.links.discord}><i class="fab fa-discord"></i> Discord</a>
@@ -144,6 +144,10 @@
 </section>
 
 <style>
+
+  .footer-link i {
+    font-size: 1.7em !important;
+  }
 
   .pixelfont.text-sm {
     font-size: 0.8em;
