@@ -102,7 +102,7 @@
 
     <h2 class="pixelfont mt-10 text-gray-800">Často kladené dotazy (FAQ)</h2>
 
-    <div class="container w-full">
+    <div class="container w-full mx-auto">
       <div class="columns-1 xl:columns-2 mt-5 h-auto text-gray-800">
         {#each bundle.spec.faqs as item}
           <div class="mb-5 break-inside-avoid-column bg-white/30 rounded-3xl px-6 py-4 text-left transition-all box-shadow-light overflow-visible">
