@@ -115,7 +115,7 @@
       </div>
     </div>
 
-    <div class="columns-1 xl:columns-3">
+    <div class="columns-1 xl:columns-3 xl:mt-5">
       {#each partnersTable as table}
       <div class="break-inside-avoid-column mb-5">
         <h2 class="pixelfont text-gray-800 text-sm mb-3">{table.title}</h2>
