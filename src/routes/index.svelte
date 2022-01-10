@@ -4,6 +4,7 @@
 
 <script>
   import SvelteTooltip from '$lib/SvelteTooltip.svelte'
+  import Link from '$lib/Link.svelte'
   import Avatar from '$lib/Avatar.svelte'
   import SvelteMarkdown from 'svelte-markdown'
   import { page } from '$app/stores';
@@ -52,6 +53,10 @@
       { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
       { title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
     ]
+  }
+
+  const renderers = {
+    link: Link
   }
 
 </script>
@@ -108,7 +113,7 @@
           <div class="mb-5 break-inside-avoid-column bg-white/30 rounded-3xl px-6 py-4 text-left transition-all box-shadow-light overflow-visible">
             <h3 class="pixelfont text-sm mb-3">{item.question}</h3>
             <p class="md">
-              <SvelteMarkdown source={item.answer} />
+              <SvelteMarkdown source={item.answer} renderers={renderers}/>
             </p>
           </div>
         {/each}
