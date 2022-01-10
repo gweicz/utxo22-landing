@@ -15,7 +15,7 @@
   let partnersTable = partnersTableGen()
 
   let hostname = $page.url.hostname
-  if (hostname === 'localhostx') {
+  if (hostname === 'localhost') {
     console.log('Local only mode')
   } else {
     const liveBundleLoader = (async () => {
