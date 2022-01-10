@@ -20,7 +20,6 @@
   } else {
     const liveBundleLoader = (async () => {
       const response = await fetch('https://spec.utxo.cz/22/bundle.json')
-      bundle = {}
       bundle = await response.json()
       $: partnersTable = partnersTableGen()
     })()

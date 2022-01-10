@@ -9,8 +9,8 @@
 
   const priority = [ 'web:webp', 'web:png', 'web:jpg', 'twitter:jpg' ]
 
-  let speakerImg
-  let speakerImgAlt
+  let speakerImg = null
+  let speakerImgAlt = null
 
   if (speaker.photos && speaker.photos.length > 0) {
     for (const prio of priority) {
@@ -18,10 +18,10 @@
         const [ ext, format ] = prio.split(':')
         const fn = `https://spec.utxo.cz/22/photos/${col}/${speaker.id}-${ext}.${format}`
         if (speakerImg) {
-          speakerImgAlt = fn
+          $: speakerImgAlt = fn
           break
         }
-        speakerImg = fn
+        $: speakerImg = fn
       }
     }
   }
