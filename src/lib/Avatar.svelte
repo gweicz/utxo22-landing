@@ -11,7 +11,6 @@
 
   let speakerImg
   let speakerImgAlt
-  console.log(speaker)
 
   if (speaker.photos && speaker.photos.length > 0) {
     for (const prio of priority) {
@@ -34,16 +33,16 @@
   $: url = speaker.twitter ? `https://twitter.com/${speaker.twitter}` : speaker.web?.url
   $: tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '')
 
-  let currentImg = speakerImg
+  $: currentImg = speakerImg
 
   function mouseOver () {
     if (speakerImgAlt) {
-      currentImg = speakerImgAlt
+      $: currentImg = speakerImgAlt
     }
   }
 
   function mouseLeave () {
-    currentImg = speakerImg
+    $: currentImg = speakerImg
   }
 
 
