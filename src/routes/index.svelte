@@ -131,13 +131,13 @@
     <div class="mt-3 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
         <div class="footer-link flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
-          <a href={bundle.links.docs}><i class="fas fa-book"></i> Dokumentace</a>
-          <a href={bundle.links.substack}><i class="fas fa-newspaper"></i> Newsletter</a>
-          <a href={bundle.links.discord}><i class="fab fa-discord"></i> Discord</a>
-          <a href={bundle.links.telegram}><i class="fab fa-telegram-plane"></i> Telegram</a>
-          <a href={bundle.links.twitter}><i class="fab fa-twitter"></i> Twitter</a>
-          <a href={bundle.links.instagram}><i class="fab fa-instagram"></i> Instagram</a>
-          <a href={bundle.links.fbevent}><i class="fab fa-facebook"></i> Facebook</a>
+          <a href={bundle.links.docs} target="_blank"><i class="fas fa-book"></i> Dokumentace</a>
+          <a href={bundle.links.substack} target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
+          <a href={bundle.links.discord} target="_blank"><i class="fab fa-discord"></i> Discord</a>
+          <a href={bundle.links.telegram} target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          <a href={bundle.links.twitter} target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href={bundle.links.instagram} target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href={bundle.links.fbevent} target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
         </div>
 
   </div>
