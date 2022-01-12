@@ -10,11 +10,24 @@
     second: 1 * 1000
   }
 
+  function cz (type, num) {
+    let s;
+    switch(type) {
+      case 'den':
+        s = num === 1 ? 'den' : (num < 5 ? 'dny' : 'dní')
+        break
+      default:
+        s = (type.substring(0, type.length-1)) + (num === 1 ? 'a' : (num > 1 && num < 5 ? 'y' : ''))
+        break
+    }
+    return num + ' ' + s
+  }
+
   let str
+  const conf = [ [ 'den', 'day' ], [ 'hodina', 'hour' ], [ 'minuta', 'minute' ], [ 'vteřina', 'second' ] ]
   function updateTime () {
     const now = new Date()
     const diff = Number(target) - Number(now)
-    const days = Math.floor(diff/units.day)
 
     const out = {}
     let used = 0
@@ -22,7 +35,7 @@
       out[unit] = Math.floor((diff-used)/units[unit])
       used += out[unit] * units[unit]
     }
-    str = `${out.day} dnů ${out.hour} hodin ${out.minute} minut ${out.second} vteřin`
+    str = conf.map(([ x, y ]) => cz(x, out[y])).join(' ')
   }
   updateTime()
   setInterval(updateTime, 1000)
