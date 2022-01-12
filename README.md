@@ -1,5 +1,7 @@
 # UTXO.22 Landing page
 
+[![GitHub Pages](https://github.com/gweicz/utxo22-landing/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/gweicz/utxo22-landing/actions/workflows/gh-pages.yml)
+
 Webová stránka o konferenci UTXO.22, která bude fungovat než vytvoříme plnohodnotný web.
 
 Stránka využívá data z [hlavního repozitáře "utxo"](https://github.com/gweicz/utxo).

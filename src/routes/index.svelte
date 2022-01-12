@@ -8,22 +8,19 @@
   import Avatar from '$lib/Avatar.svelte'
   import SvelteMarkdown from 'svelte-markdown'
   import { page } from '$app/stores';
+  import Countdown from '$lib/Countdown.svelte'
 
   import staticBundle from '$lib/bundle.json'
 
-  let bundle = staticBundle
+  let bundle = null //staticBundle
   let partnersTable = partnersTableGen()
 
   let hostname = $page.url.hostname
-  if (hostname === 'localhost') {
-    console.log('Local only mode')
-  } else {
-    const liveBundleLoader = (async () => {
-      const response = await fetch('https://spec.utxo.cz/22/bundle.json')
-      bundle = await response.json()
-      $: partnersTable = partnersTableGen()
-    })()
-  }
+  const liveBundleLoader = (async () => {
+    const response = await fetch('https://spec.utxo.cz/22/bundle.json')
+    bundle = await response.json()
+    $: partnersTable = partnersTableGen()
+  })()
 
   const origName = 'UTXO.22'
   let h1 = origName
@@ -48,6 +45,9 @@
   }
 
   function partnersTableGen () {
+    if (!bundle) {
+      return []
+    }
     return [
       { title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
       { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
@@ -62,11 +62,14 @@
 </script>
 
 <svelte:head>
-  <title>{bundle.name} | {bundle.description}</title>
+  <title>{bundle?.name || staticBundle.name} | {bundle?.description || staticBundle.description}</title>
 </svelte:head>
 
 <section>
-  <div class="relative px-6 pt-10 pb-8 sm:max-w-6xl sm:mx-auto sm:rounded-lg sm:px-5 text-center">
+  {#if !bundle}
+    <div class="pixelfont max-w-xl mx-auto text-center text-3xl">Načítám ..</div>
+  {:else}
+    <div class="relative px-6 pt-10 pb-8 sm:max-w-6xl sm:mx-auto sm:rounded-lg sm:px-5 text-center transition-all">
     <h1 class="text-5xl md:text-6xl lg:text-7xl">{h1}</h1>
     <div class="subline-shadow text-lg md:text-xl lg:text-2xl">4.-5. červen 2022 @ {bundle.place}</div>
     <div class="subline text-sm md:text-md lg:text-lg text-gray-800">{bundle.description}</div>
@@ -135,17 +138,23 @@
 
     <div class="mt-3 subline-shadow2">We Are All Satoshi <i class="fas fa-heart text-red-500"></i></div>
 
-        <div class="footer-link flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
-          <a href={bundle.links.docs} target="_blank"><i class="fas fa-book"></i> Dokumentace</a>
-          <a href={bundle.links.substack} target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
-          <a href={bundle.links.discord} target="_blank"><i class="fab fa-discord"></i> Discord</a>
-          <a href={bundle.links.telegram} target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          <a href={bundle.links.twitter} target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-          <a href={bundle.links.instagram} target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href={bundle.links.fbevent} target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-        </div>
+
+    <div class="mt-10 pixelfont text-gray-800">
+      <Countdown />
+    </div>
+
+    <div class="footer-link flex flex-wrap justify-center relative mt-10 mb-5 pixelfont-micro gap-6 mx-auto w-8/12">
+      <a href={bundle.links.docs} target="_blank"><i class="fas fa-book"></i> Dokumentace</a>
+      <a href={bundle.links.substack} target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
+      <a href={bundle.links.discord} target="_blank"><i class="fab fa-discord"></i> Discord</a>
+      <a href={bundle.links.telegram} target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+      <a href={bundle.links.twitter} target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href={bundle.links.instagram} target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href={bundle.links.fbevent} target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
 
   </div>
+  {/if}
 </section>
 
 <style>
