@@ -14,12 +14,16 @@
 
   let bundle = null //staticBundle
   let partnersTable = partnersTableGen()
+  let visible = false
 
   let hostname = $page.url.hostname
   const liveBundleLoader = (async () => {
     const response = await fetch('https://spec.utxo.cz/22/bundle.json')
     bundle = await response.json()
     $: partnersTable = partnersTableGen()
+    setTimeout(() => {
+      visible = true
+    }, 100)
   })()
 
   const origName = 'UTXO.22'
@@ -67,9 +71,9 @@
 
 <section>
   {#if !bundle}
-    <div class="pixelfont max-w-xl mx-auto text-center text-3xl">Načítám ..</div>
+  <div class="pixelfont max-w-xl mx-auto text-center text-3xl animate-ping text-gray-800">Načítám ..</div>
   {:else}
-    <div class="relative px-6 pt-10 pb-8 sm:max-w-6xl sm:mx-auto sm:rounded-lg sm:px-5 text-center transition-all">
+  <div class="{visible ? 'opacity-100' : 'opacity-0'} relative px-6 pt-10 pb-8 sm:max-w-6xl sm:mx-auto sm:rounded-lg sm:px-5 text-center transition-all duration-500">
     <h1 class="text-5xl md:text-6xl lg:text-7xl">{h1}</h1>
     <div class="subline-shadow text-lg md:text-xl lg:text-2xl">4.-5. červen 2022 @ {bundle.place}</div>
     <div class="subline text-sm md:text-md lg:text-lg text-gray-800">{bundle.description}</div>
