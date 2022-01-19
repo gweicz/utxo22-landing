@@ -124,7 +124,7 @@
       </div>
     </div>
 
-    <div class="subline-shadow2 text-lg md:text-xl lg:text-2xl mt-10"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
+    <div class="subline-shadow2 text-lg md:text-xl lg:text-2xl mt-12"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
 
     <h2 class="pixelfont mt-10 text-gray-800">Často kladené dotazy (FAQ)</h2>
 
