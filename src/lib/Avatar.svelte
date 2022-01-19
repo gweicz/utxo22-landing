@@ -68,7 +68,7 @@
 <div >
   <SvelteTooltip tip={tip}>
     <a href="{url}" target="_blank" class="rounded-full" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
-      <img class="{defaultClass} transition-all {visible ? '' : 'opacity-50'} {lead ? 'w-24 md:w-28 m-4' : `small ${style}`} {category && speaker.tracks && speaker.tracks.includes(category) ? '' : (category ? ('opacity-20') : '') }" src={currentImg} alt={speaker.name} />
+      <img class="{defaultClass} transition-all {visible ? '' : 'opacity-40'} {lead ? 'w-24 md:w-28 m-4' : `small ${style}`} {category && speaker.tracks && speaker.tracks.includes(category) ? '' : (category ? ('opacity-20') : '') }" src={currentImg} alt={speaker.name} />
   </SvelteTooltip>
 </div>
 

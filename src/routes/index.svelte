@@ -57,9 +57,9 @@
       return []
     }
     return [
-      { title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
-      { title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
-      { title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
+      { id: 'komunity', title: 'Komunity', arr: bundle.spec.partners.filter(x => x.type === 'community') },
+      { id: 'sponzori', title: 'Sponzoři', arr: bundle.spec.partners.filter(x => x.type === 'sponsor') },
+      { id: 'media', title: 'Mediální partneři', arr: bundle.spec.partners.filter(x => x.type === 'medium') },
     ]
   }
 
@@ -147,7 +147,9 @@
         <h2 class="pixelfont text-gray-800 text-sm mb-3">{table.title}</h2>
         <div class="flex flex-wrap justify-center">
           {#each table.arr as item}
-            <Avatar speaker={item} col="partners" />
+            <div on:mouseover={() => mouseOverAvatar('partners:'+table.id, item)} on:mouseleave={() => mouseLeaveAvatar()}>
+              <Avatar speaker={item} col="partners" visible={!selectedAvatar || selectedAvatar && selectedAvatar[0] !== 'partners:'+table.id || (selectedAvatar && selectedAvatar[1].id === item.id)} />
+            </div>
           {/each}
         </div>
       </div>
