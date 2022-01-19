@@ -78,6 +78,7 @@
     border-radius: 50%;
     margin: 0.23em;
     box-shadow: 4px 3px #00000020;
+    background-color: white;
   }
 
   .avatar {
