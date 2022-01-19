@@ -16,10 +16,14 @@
   let partnersTable = partnersTableGen()
   let visible = false
 
-  let hostname = $page.url.hostname
   const liveBundleLoader = (async () => {
-    const response = await fetch('https://spec.utxo.cz/22/bundle.json')
-    bundle = await response.json()
+
+    if ($page.url.hostname === 'localhost') {
+      bundle = staticBundle
+    } else {
+      const response = await fetch('https://spec.utxo.cz/22/bundle.json')
+      bundle = await response.json()
+    }
     $: partnersTable = partnersTableGen()
     setTimeout(() => {
       visible = true
@@ -30,7 +34,7 @@
   let h1 = origName
 
   let category = null
-  let selectedSpeaker = null
+  let selectedAvatar = null
 
   function mouseOverCat (cat) {
     category = cat
@@ -40,12 +44,12 @@
     category = null
   }
 
-  function mouseOverSpeaker (speaker) {
-    selectedSpeaker = speaker
+  function mouseOverAvatar (type, item) {
+    selectedAvatar = [ type, item ]
   }
 
-  function mouseLeaveSpeaker () {
-    selectedSpeaker = null
+  function mouseLeaveAvatar (type, item) {
+    selectedAvatar = null
   }
 
   function partnersTableGen () {
@@ -83,8 +87,8 @@
         <div class="mt-3 mb-6 flex flex-wrap justify-center relative">
         {#each bundle.spec.speakers as speaker}
           {#if speaker.lead}
-            <div class="rounded-full" on:mouseover={() => mouseOverSpeaker(speaker)} on:mouseleave={mouseLeaveSpeaker}>
-              <Avatar speaker={speaker} lead={true} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker.id === speaker.id)} />
+            <div class="rounded-full" on:mouseover={() => mouseOverAvatar('speaker', speaker)} on:mouseleave={() => mouseLeaveAvatar('speaker')}>
+              <Avatar speaker={speaker} lead={true} category={category} visible={!selectedAvatar || selectedAvatar && selectedAvatar[0] !== 'speaker' || (selectedAvatar && selectedAvatar[1].id === speaker.id)} />
             </div>
           {/if}
         {/each}
@@ -94,8 +98,8 @@
         <div class="flex flex-wrap justify-center relative">
         {#each bundle.spec.speakers as speaker}
           {#if !speaker.lead}
-            <div on:mouseover={() => mouseOverSpeaker(speaker)} on:mouseleave={mouseLeaveSpeaker}>
-              <Avatar speaker={speaker} category={category} visible={!selectedSpeaker || (selectedSpeaker && selectedSpeaker.id === speaker.id)} />
+            <div on:mouseover={() => mouseOverAvatar('speaker', speaker)} on:mouseleave={() => mouseLeaveAvatar()}>
+              <Avatar speaker={speaker} category={category} visible={!selectedAvatar || selectedAvatar && selectedAvatar[0] !== 'speaker' || (selectedAvatar && selectedAvatar[1].id === speaker.id)} />
             </div>
           {/if}
         {/each}
@@ -105,12 +109,22 @@
         <div class="mt-12 mb-6 flex flex-wrap justify-center relative gap-4 text-sm">
           {#each bundle.spec.tracks as track}
             <div on:mouseover={() => mouseOverCat(track.id)} on:mouseleave={mouseLeaveCat}
-              class="block box-shadow transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 px-6 py-4 cursor-pointer {selectedSpeaker && !selectedSpeaker.tracks?.includes(track.id) ? 'opacity-20' : ''}">{track.shortname || track.name}</div>
+              class="block box-shadow transition-all pixelfont text-xs rounded-3xl w-auto bg-white/20 hover:bg-white/60 text-gray-800 px-6 py-4 cursor-pointer {(selectedAvatar && !selectedAvatar[1].tracks?.includes(track.id)) ? 'opacity-20' : ''}">{track.shortname || track.name}</div>
           {/each}
         </div>
     </div>
 
-    <div class="subline-shadow2 text-lg md:text-xl lg:text-2xl mt-14"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
+    <div class="break-inside-avoid-column mt-10">
+      <div class="flex flex-wrap justify-center">
+        {#each bundle.spec.projects as item}
+          <div on:mouseover={() => mouseOverAvatar('project', item)} on:mouseleave={() => mouseLeaveAvatar('project')}>
+            <Avatar speaker={item} col="projects" style="w-12" defaultClass="avatar-micro" category={category} visible={!selectedAvatar || selectedAvatar && selectedAvatar[0] !== 'project' || (selectedAvatar && selectedAvatar[1].id === item.id)}/>
+          </div>
+        {/each}
+      </div>
+    </div>
+
+    <div class="subline-shadow2 text-lg md:text-xl lg:text-2xl mt-10"><div>2 dny, 50+ přednášejích, 100h+ obsahu, 1000+ návštěvníků</div></div>
 
     <h2 class="pixelfont mt-10 text-gray-800">Často kladené dotazy (FAQ)</h2>
 

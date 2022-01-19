@@ -4,10 +4,18 @@
   export let category = null
   export let visible = true
   export let col = 'speakers'
+  export let style = 'w-14 md:w-16 m-2'
+  export let defaultClass = 'avatar'
 
   import SvelteTooltip from '$lib/SvelteTooltip.svelte';
+  import { page } from '$app/stores';
 
-  const priority = [ 'web:webp', 'web:png', 'web:jpg', 'twitter:jpg' ]
+  let imagesRoot = 'https://spec.utxo.cz/22/photos'
+  if ($page.url.hostname === 'localhost') {
+    imagesRoot = 'http://localhost:8000/22/photos'
+  }
+
+  const priority = [ 'web:svg', 'web:webp', 'web:png', 'web:jpg', 'twitter:jpg' ]
 
   let speakerImg = null
   let speakerImgAlt = null
@@ -16,7 +24,7 @@
     for (const prio of priority) {
       if (speaker.photos.includes(prio)) {
         const [ ext, format ] = prio.split(':')
-        const fn = `https://spec.utxo.cz/22/photos/${col}/${speaker.id}-${ext}.${format}`
+        const fn = `${imagesRoot}/${col}/${speaker.id}-${ext}.${format}`
         if (speakerImg) {
           $: speakerImgAlt = fn
           break
@@ -30,7 +38,17 @@
     speakerImg = '/img/twitter-avatar.png'
   }
 
-  $: url = speaker.twitter ? `https://twitter.com/${speaker.twitter}` : speaker.web?.url
+  function twitterLink (id) {
+    return `https://twitter.com/${speaker.twitter}`
+  }
+
+  let url = null
+
+  if (col === 'speakers') {
+    url = speaker.twitter ? twitterLink(speaker.twitter) : speaker.web?.url
+  } else {
+    url = speaker.web ? speaker.web.url : twitterLink(speaker.twitter)
+  }
   $: tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '')
 
   $: currentImg = speakerImg
@@ -45,30 +63,31 @@
     $: currentImg = speakerImg
   }
 
-
 </script>
 
 <div >
   <SvelteTooltip tip={tip}>
     <a href="{url}" target="_blank" class="rounded-full" on:mouseover={mouseOver} on:mouseleave={mouseLeave}>
-      <img class="avatar transition-all {visible ? '' : 'opacity-20'} {lead ? 'w-24 md:w-28 m-4' : 'small w-14 md:w-16 m-4'} {category && speaker.tracks && speaker.tracks.includes(category) ? '' : category ? ('opacity-20') : '' }" src={currentImg} alt={speaker.name} />
+      <img class="{defaultClass} transition-all {visible ? '' : 'opacity-50'} {lead ? 'w-24 md:w-28 m-4' : `small ${style}`} {category && speaker.tracks && speaker.tracks.includes(category) ? '' : (category ? ('opacity-20') : '') }" src={currentImg} alt={speaker.name} />
   </SvelteTooltip>
 </div>
 
 <style>
 
+  .avatar-micro {
+    border-radius: 50%;
+    margin: 0.23em;
+    box-shadow: 4px 3px #00000020;
+  }
+
   .avatar {
     border-radius: 50%;
-    /*height: 5em;
-    width: 5em;*/
     margin: 0.5em;
 
     box-shadow: 5px 4px #00000020;
   }
 
   .avatar.small {
-    /*width: 3.5em;
-    height: 3.5em;*/
     margin: 0.4em;
   }
 
