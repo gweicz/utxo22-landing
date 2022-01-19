@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <div class="break-inside-avoid-column mt-10">
+    <div class="break-inside-avoid-column mt-12">
       <div class="flex flex-wrap justify-center">
         {#each bundle.spec.projects as item}
           <div on:mouseover={() => mouseOverAvatar('project', item)} on:mouseleave={() => mouseLeaveAvatar('project')}>
