@@ -42,6 +42,14 @@
     return `https://twitter.com/${speaker.twitter}`
   }
 
+  function getFlagEmoji(countryCode) {
+    const codePoints = countryCode
+      .toUpperCase()
+      .split('')
+      .map(char =>  127397 + char.charCodeAt());
+    return String.fromCodePoint(...codePoints);
+  }
+
   let url = null
 
   if (col === 'speakers') {
@@ -49,7 +57,7 @@
   } else {
     url = speaker.web ? speaker.web.url : twitterLink(speaker.twitter)
   }
-  $: tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '')
+  $: tip = speaker.name + (speaker.nickname ? ` (${speaker.nickname})` : '') + (speaker.country ? ' '+getFlagEmoji(speaker.country) : '')
 
   $: currentImg = speakerImg
 
