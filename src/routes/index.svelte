@@ -84,7 +84,7 @@
 
     <div class="mt-10">
         <!--h2 class="pixelfont md:text-md lg:text-lg">Přednášející ({bundle.spec.speakers.length})</h2-->
-        <div class="mt-3 mb-6 flex flex-wrap justify-center relative">
+        <div class="mt-3 mb-6 flex flex-wrap justify-center relative lg:mx-20">
         {#each bundle.spec.speakers as speaker}
           {#if speaker.lead}
             <div class="rounded-full" on:mouseover={() => mouseOverAvatar('speaker', speaker)} on:mouseleave={() => mouseLeaveAvatar('speaker')}>
