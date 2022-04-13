@@ -26,7 +26,7 @@ jobs:
       - run: npm run build
 
       - name: Add custom domain
-        run: "touch build/CNAME && echo \"old.utxo.cz\" >> build/CNAME"
+        run: "touch build/CNAME && echo \"old.22.utxo.cz\" >> build/CNAME"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
